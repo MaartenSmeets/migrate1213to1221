@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>nl.amis.smeetsm.service.HelloWorldService_1_0</groupId>
+    <artifactId>sca_HelloWorldService_1_0</artifactId>
+    <version>1.0.0</version>
+    <packaging>sar</packaging>
+    
+    <parent>
+        <groupId>com.oracle.soa</groupId>
+        <artifactId>sar-common</artifactId>
+        <version>12.1.3-0-0</version>
+    </parent>
+    
+    <properties>
+        <scac.input.dir>${project.basedir}/SOA/</scac.input.dir>
+        <scac.output.dir>${project.basedir}/target</scac.output.dir>
+        <scac.input>${scac.input.dir}/composite.xml</scac.input>
+        <scac.output>${scac.output.dir}/out.xml</scac.output>
+        <scac.error>${scac.output.dir}/error.txt</scac.error>
+        <scac.displayLevel>1</scac.displayLevel>
+
+        <composite.name>${project.artifactId}</composite.name>
+        <composite.revision>1.0</composite.revision>
+        <composite.partition>default</composite.partition>        
+        <serverUrl>${oracleServerUrl}</serverUrl>        
+        <user>${oracleUsername}</user>
+        <password>${oraclePassword}</password>
+        <overwrite>true</overwrite>
+        <forceDefault>true</forceDefault>
+        <regenerateRulebase>false</regenerateRulebase>
+        <keepInstancesOnRedeploy>false</keepInstancesOnRedeploy>
+        <scatest.result>${scac.output.dir}/testResult</scatest.result>
+        <input>${project.artifactId}</input>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.oracle.soa.plugin</groupId>
+                <artifactId>oracle-soa-plugin</artifactId>
+                <version>12.1.3-0-0</version>
+                <configuration>
+				    <compositeName>${project.artifactId}</compositeName>
+                    <composite>${scac.input}</composite>
+                    <sarLocation>${scac.output.dir}/sca_${project.artifactId}_rev${composite.revision}.jar</sarLocation>
+                    <serverUrl>${serverUrl}</serverUrl>
+                    <user>${user}</user>
+                    <password>${password}</password>
+                    <compositeRevision>${composite.revision}</compositeRevision>
+                    <revision>${composite.revision}</revision>
+                    <scacInputDir>${scac.input.dir}</scacInputDir> 
+				    <appHome>${project.basedir}/..</appHome>                   
+                    <input>${input}</input> 
+                </configuration>
+                <extensions>true</extensions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
