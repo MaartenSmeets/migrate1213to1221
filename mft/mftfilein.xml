@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root xmlns="http://mftsomethingnamespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<attribute name="Content Folder">
+      <replace>whateverishere</replace>
+</attribute>
+</root>
